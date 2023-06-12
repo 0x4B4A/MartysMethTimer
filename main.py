@@ -27,7 +27,8 @@ def get_cat():
     mediaID=api.media_upload(filename='cat.png')
     print(mediaID)
     mediaID=str(mediaID)
-    mediaID=mediaID[105:124]
+    mediaID_num=mediaID.find('media_id_string=')
+    mediaID=mediaID[mediaID_num+17:mediaID_num+36]
     print(mediaID)
     return(mediaID)
 
@@ -48,9 +49,9 @@ while True:
     num.close()
 
     mediaID=get_cat()
-    client.create_tweet(text="testing :)", media_ids=[mediaID])
+    client.create_tweet(text="Marty has started cooking! He has cooked " + text + " times!\nTweeting in another two hours...", media_ids=[mediaID])
     print("tweet sent!")
-    time.sleep(5)
+    time.sleep(7200)
     mediaID = get_cat()
     client.create_tweet(text="Marty can cook again!\nHe has cooked " + text + " times!", media_ids=[mediaID])
     print("marty can cook now")
