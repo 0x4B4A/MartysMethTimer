@@ -3,11 +3,11 @@ import time
 import os
 import requests
 
-bearer = "AAAAAAAAAAAAAAAAAAAAALN8oAEAAAAAa9S0xtY1mpJ43NxTmTz1q5iN04U%3D3Mnhsp1FDaePg5WCKBxDWnJnGNUmjlvYFRdfOGfYMnaIcgLgQX"
-api_token = "BfS2lC0v4ew1V7IZUlFZIZWmp"
-api_secret = "ZGUebFMBzddZJVZwtvYJfqxGnOkqxaCdBYLHhQPpZd0poLm3tj"
-access_token = "1668033824133922816-IfKJWy0y3VGmiB09V5XETxMyPBOPZz"
-access_secret = "1fSXfOEsaX9naoHgrnQg65j2Q7NkQfgOKBhmLGBaTaYQp"
+bearer = ""
+api_token = ""
+api_secret = ""
+access_token = ""
+access_secret = ""
 
 client = tweepy.Client(bearer, api_token, api_secret, access_token, access_secret)
 
