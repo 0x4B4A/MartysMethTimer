@@ -32,27 +32,35 @@ def get_cat():
     print(mediaID)
     return(mediaID)
 
-while True:
-    print("press ENTER to tweet!")
-    input(" ")
-
-    num = open('times.txt', 'r+')
-    text = num.read()
-    text_num = int(text)
-    print(text)
-    num.close()
-    os.remove("times.txt")
-    num = open('times.txt', 'x')
-    num.close()
-    num = open('times.txt', 'r+')
-    num.write(str(text_num+1))
-    num.close()
-
-    mediaID=get_cat()
-    client.create_tweet(text="Marty has started cooking! He has cooked " + text + " times!\nTweeting in another two hours...", media_ids=[mediaID])
-    print("tweet sent!")
-    time.sleep(7200)
+def create_tweet(text):
     mediaID = get_cat()
-    client.create_tweet(text="Marty can cook again!\nHe has cooked " + text + " times!", media_ids=[mediaID])
-    print("marty can cook now")
-    continue
+    client.create_tweet(text=text, media_ids=[mediaID])
+    print("tweet sent!")
+
+while True:
+    print("type 'meth' to tweet meth cooking!\ntype 'logoff' to tweet logoff tweet")
+    plyr_input = input("> ")
+
+    if plyr_input == "meth":
+
+        num = open('times.txt', 'r+')
+        text = num.read()
+        text_num = int(text)
+        print(text)
+        num.close()
+        os.remove("times.txt")
+        num = open('times.txt', 'x')
+        num.close()
+        num = open('times.txt', 'r+')
+        num.write(str(text_num+1))
+        num.close()
+
+        create_tweet("Marty has started cooking! He has cooked " + text + " times!\nTweeting in another two hours...")
+        for i in range(0,7200):
+            print(str(7200-i))
+            time.sleep(1)
+        create_tweet("Marty can cook again!\nHe has cooked " + text + " times!")
+        continue
+
+    elif plyr_input == "logoff":
+        create_tweet("Marty has logged off of NoPixel.\nHave a good night everyone!")
